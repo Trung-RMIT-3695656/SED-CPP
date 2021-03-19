@@ -1,22 +1,37 @@
-// Tasks.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-#include "pch.h"
+/*
+RMIT University Vietnam
+Course: EEET2482   Software Engineering Design
+Semester: 1/2021
+Author: Nguyen Phuoc Duy Trung
+s-number: 3695656
+Create date: 19/03/2021
+Acknowledgement: Stackoverflow, Learncpp.com 
+*/
+
+
+//#include "pch.h"
 #include <iostream>
 
-void checkCharacter(int a, char* b[]) {
-	int hasDigit{}, lowerCase{}, upperCase{},
-		specialChar{}, totalChar{};
-
-	// exit the program if the input is less than 2 or more than 50
-	if (a < 2 || a > 50) {
-		std::cout << "Please try again!!!" << std::endl;
-		
-	}
+int checkCharacter(int a, char* b[]) {
+	int hasDigit{}, hasLowerCase{}, hasUpperCase{},
+		hasSpecialChar{}, totalChar{};
 
 	//check each character in the input
 	for (int i = 1; i < a; i++) {
+
 		for (int j = 0; j < strlen(b[i]); j++) {
 			totalChar++;
+
+			// exit the program if the input is less than 2 or more than 50
+			if (a < 2) {
+				std::cout << "You type too little!!!\n";
+				return 1;
+			}
+			
+			if (totalChar > 50) {
+				std::cout << "You type too much!!!\n";
+				return 1;
+			}
 
 			// if the input has digits
 			if (b[i][j] >= '0' && b[i][j] <= '9') {
@@ -24,24 +39,25 @@ void checkCharacter(int a, char* b[]) {
 			}
 			// if the input has character with lower case
 			else if (b[i][j] >= 'a' && b[i][j] <= 'z') {
-				lowerCase++;
+				hasLowerCase++;
 			}
 			// if the input has character with upper case
 			else if (b[i][j] >= 'A' && b[i][j] <= 'Z') {
-				upperCase++;
+				hasUpperCase++;
 			}
 			// if the input has special character
 			else {
-				specialChar++;
+				hasSpecialChar++;
 			}
 		}
+		
 	}
 	std::cout << "You had input: \n";
-	std::cout << lowerCase << " lowercase character\n";
-	std::cout << upperCase << " uppercase character\n";
+	std::cout << hasLowerCase << " lowercase character\n";
+	std::cout << hasUpperCase << " uppercase character\n";
 	std::cout << hasDigit << " digit character\n";
-	std::cout << specialChar << " other character\n";
-	std::cout << "Total characters: " << totalChar;
+	std::cout << hasSpecialChar << " other character\n";
+	std::cout << "Total characters that you type: " << totalChar;
 	
 }
 
