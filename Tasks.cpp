@@ -17,6 +17,7 @@ void checkCharacter(int a, char* b[]) {
 	for (int i = 1; i < a; i++) {
 		for (int j = 0; j < strlen(b[i]); j++) {
 			totalChar++;
+
 			// if the input has digits
 			if (b[i][j] >= '0' && b[i][j] <= '9') {
 				hasDigit++;
